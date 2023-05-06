@@ -3,9 +3,11 @@
   "description": "의존성 공유 remote 1",
   "packageManager": "yarn@3.2.0",
   "private": true,
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+  "scripts": {
+    "start": "yarn build && yarn serve",
+    "build": "webpack --config webpack.config.js",
+    "serve": "node server.js",
+    "type-check": "tsc"
   },
   "devDependencies": {
     "@swc/core": "^1.2.215",
