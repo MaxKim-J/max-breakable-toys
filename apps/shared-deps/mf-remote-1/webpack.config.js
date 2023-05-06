@@ -52,6 +52,9 @@ module.exports = {
           singleton: true,
           version: '18.2.0',
         },
+        'shared-deps-mf-package': {
+          version: '1.0.9',
+        },
       },
     }),
   ],

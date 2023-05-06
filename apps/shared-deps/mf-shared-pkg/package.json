@@ -1,6 +1,6 @@
 {
   "name": "shared-deps-mf-package",
-  "version": "1.0.5",
+  "version": "1.0.11",
   "description": "npm 퍼블릭 레지스트리를 사용하는 공유 의존성 패키지",
   "author": "MaxKim-J",
   "repository": "https://github.com/MaxKim-J/max-breakable-toys",

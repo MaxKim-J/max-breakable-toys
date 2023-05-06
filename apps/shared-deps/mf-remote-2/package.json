@@ -4,7 +4,7 @@
   "packageManager": "yarn@3.2.0",
   "private": true,
   "scripts": {
-    "start": "yarn build && yarn serve",
+    "start": "rm -rf dist && yarn build && yarn serve",
     "build": "webpack --config webpack.config.js",
     "serve": "node server.js",
     "type-check": "tsc"
@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.18.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "shared-deps-mf-package": "1.0.9"
   },
   "devDependencies": {
     "@swc/core": "^1.2.215",
