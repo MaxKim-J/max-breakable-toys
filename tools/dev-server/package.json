@@ -1,0 +1,14 @@
+{
+  "name": "@breakable-toy/dev-server",
+  "description": "핸드메이드 데브 서버",
+  "packageManager": "yarn@3.2.0",
+  "private": true,
+  "bin": {
+    "dev": "bin/dev.mjs"
+  },
+  "devDependencies": {
+    "@parcel/watcher": "^2.1.0",
+    "fastify": "^4.15.0",
+    "zx": "^7.2.1"
+  }
+}
