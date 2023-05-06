@@ -37,7 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:apps/shared-deps/mf-remote-2"\
       },\
       {\
-        "name": "@breakable-toy/shared-deps-mf-package",\
+        "name": "shared-deps-mf-package",\
         "reference": "workspace:apps/shared-deps/mf-shared-pkg"\
       },\
       {\
@@ -52,9 +52,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@breakable-toy/dev-server", ["workspace:tools/dev-server"]],\
       ["@breakable-toy/root", ["workspace:."]],\
       ["@breakable-toy/shared-deps-mf-host", ["workspace:apps/shared-deps/mf-host"]],\
-      ["@breakable-toy/shared-deps-mf-package", ["workspace:apps/shared-deps/mf-shared-pkg"]],\
       ["@breakable-toy/shared-deps-mf-remote-1", ["workspace:apps/shared-deps/mf-remote-1"]],\
-      ["@breakable-toy/shared-deps-mf-remote-2", ["workspace:apps/shared-deps/mf-remote-2"]]\
+      ["@breakable-toy/shared-deps-mf-remote-2", ["workspace:apps/shared-deps/mf-remote-2"]],\
+      ["shared-deps-mf-package", ["workspace:apps/shared-deps/mf-shared-pkg"]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -148,23 +148,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=bda367"],\
             ["webpack", "virtual:e15707c4dd39b570853d8c8b01d1f59920f977ec95f8a0e3fdf5413e7631ed7cdd5ade571576ba7afba38f7ffa2e455e31d0c09ad0aa9c91e74f748839e46bd9#npm:5.82.0"],\
             ["webpack-cli", "virtual:e15707c4dd39b570853d8c8b01d1f59920f977ec95f8a0e3fdf5413e7631ed7cdd5ade571576ba7afba38f7ffa2e455e31d0c09ad0aa9c91e74f748839e46bd9#npm:4.10.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }]\
-      ]],\
-      ["@breakable-toy/shared-deps-mf-package", [\
-        ["workspace:apps/shared-deps/mf-shared-pkg", {\
-          "packageLocation": "./apps/shared-deps/mf-shared-pkg/",\
-          "packageDependencies": [\
-            ["@breakable-toy/shared-deps-mf-package", "workspace:apps/shared-deps/mf-shared-pkg"],\
-            ["@typescript-eslint/eslint-plugin", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
-            ["@typescript-eslint/parser", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
-            ["eslint", "npm:8.38.0"],\
-            ["eslint-config-airbnb-base", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:15.0.0"],\
-            ["eslint-plugin-import", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:2.27.5"],\
-            ["eslint-plugin-react", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:7.32.2"],\
-            ["prettier", "npm:2.8.7"],\
-            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=bda367"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -5627,6 +5610,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["shared-deps-mf-package", [\
+        ["workspace:apps/shared-deps/mf-shared-pkg", {\
+          "packageLocation": "./apps/shared-deps/mf-shared-pkg/",\
+          "packageDependencies": [\
+            ["shared-deps-mf-package", "workspace:apps/shared-deps/mf-shared-pkg"],\
+            ["@swc/core", "virtual:e15707c4dd39b570853d8c8b01d1f59920f977ec95f8a0e3fdf5413e7631ed7cdd5ade571576ba7afba38f7ffa2e455e31d0c09ad0aa9c91e74f748839e46bd9#npm:1.3.56"],\
+            ["@types/react", "npm:18.0.35"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["@typescript-eslint/eslint-plugin", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["@typescript-eslint/parser", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["eslint", "npm:8.38.0"],\
+            ["eslint-config-airbnb-base", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:15.0.0"],\
+            ["eslint-plugin-import", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:2.27.5"],\
+            ["eslint-plugin-react", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:7.32.2"],\
+            ["prettier", "npm:2.8.7"],\
+            ["swc-loader", "virtual:f932eb0343ac4260a5f09682745288531cac1f61193719b284edc6b30c8173e6d5c97caa455bf932caaf0788fe6fffaa0c1eeccdc4b56c318ba3bfca4dc0f4d7#npm:0.2.3"],\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=bda367"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
       ["shebang-command", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/shebang-command-npm-2.0.0-eb2b01921d-6b52fe8727.zip/node_modules/shebang-command/",\
@@ -5973,6 +5977,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/swc__core", null],\
             ["@types/webpack", null],\
             ["webpack", "virtual:e15707c4dd39b570853d8c8b01d1f59920f977ec95f8a0e3fdf5413e7631ed7cdd5ade571576ba7afba38f7ffa2e455e31d0c09ad0aa9c91e74f748839e46bd9#npm:5.82.0"]\
+          ],\
+          "packagePeers": [\
+            "@swc/core",\
+            "@types/swc__core",\
+            "@types/webpack",\
+            "webpack"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:f932eb0343ac4260a5f09682745288531cac1f61193719b284edc6b30c8173e6d5c97caa455bf932caaf0788fe6fffaa0c1eeccdc4b56c318ba3bfca4dc0f4d7#npm:0.2.3", {\
+          "packageLocation": "./.yarn/__virtual__/swc-loader-virtual-dae32e8af7/0/cache/swc-loader-npm-0.2.3-349484c9ea-010d84d399.zip/node_modules/swc-loader/",\
+          "packageDependencies": [\
+            ["swc-loader", "virtual:f932eb0343ac4260a5f09682745288531cac1f61193719b284edc6b30c8173e6d5c97caa455bf932caaf0788fe6fffaa0c1eeccdc4b56c318ba3bfca4dc0f4d7#npm:0.2.3"],\
+            ["@swc/core", "virtual:e15707c4dd39b570853d8c8b01d1f59920f977ec95f8a0e3fdf5413e7631ed7cdd5ade571576ba7afba38f7ffa2e455e31d0c09ad0aa9c91e74f748839e46bd9#npm:1.3.56"],\
+            ["@types/swc__core", null],\
+            ["@types/webpack", null],\
+            ["webpack", null]\
           ],\
           "packagePeers": [\
             "@swc/core",\

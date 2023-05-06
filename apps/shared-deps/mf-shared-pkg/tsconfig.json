@@ -1,3 +1,12 @@
 {
-  "extends": "../../../_configs/tsconfig/tsconfig.react.json"
+  "extends": "../../../_configs/tsconfig/tsconfig.common.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "outDir": "dist",
+    "isolatedModules": false
+  },
+  "include": [
+    "index.ts"
+  ]
 }

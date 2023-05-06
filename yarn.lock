@@ -76,21 +76,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@breakable-toy/shared-deps-mf-package@workspace:apps/shared-deps/mf-shared-pkg":
-  version: 0.0.0-use.local
-  resolution: "@breakable-toy/shared-deps-mf-package@workspace:apps/shared-deps/mf-shared-pkg"
-  dependencies:
-    "@typescript-eslint/eslint-plugin": ^5.58.0
-    "@typescript-eslint/parser": ^5.58.0
-    eslint: ^8.38.0
-    eslint-config-airbnb-base: ^15.0.0
-    eslint-plugin-import: ^2.27.5
-    eslint-plugin-react: ^7.32.2
-    prettier: ^2.8.7
-    typescript: ^5.0.4
-  languageName: unknown
-  linkType: soft
-
 "@breakable-toy/shared-deps-mf-remote-1@workspace:apps/shared-deps/mf-remote-1":
   version: 0.0.0-use.local
   resolution: "@breakable-toy/shared-deps-mf-remote-1@workspace:apps/shared-deps/mf-remote-1"
@@ -4601,6 +4586,25 @@ __metadata:
   checksum: 39b3dd9630a774aba288a680e7d2901f5c0eae7b8387fc5c8ea559918b29b3da144b7bdb990d7ccd9e11be05508ac9e459ce51d01fd65e583282f6ffafcba2e7
   languageName: node
   linkType: hard
+
+"shared-deps-mf-package@workspace:apps/shared-deps/mf-shared-pkg":
+  version: 0.0.0-use.local
+  resolution: "shared-deps-mf-package@workspace:apps/shared-deps/mf-shared-pkg"
+  dependencies:
+    "@swc/core": ^1.2.215
+    "@types/react": ^18.0.35
+    "@types/react-dom": ^18.0.11
+    "@typescript-eslint/eslint-plugin": ^5.58.0
+    "@typescript-eslint/parser": ^5.58.0
+    eslint: ^8.38.0
+    eslint-config-airbnb-base: ^15.0.0
+    eslint-plugin-import: ^2.27.5
+    eslint-plugin-react: ^7.32.2
+    prettier: ^2.8.7
+    swc-loader: ^0.2.3
+    typescript: ^5.0.4
+  languageName: unknown
+  linkType: soft
 
 "shebang-command@npm:^2.0.0":
   version: 2.0.0
