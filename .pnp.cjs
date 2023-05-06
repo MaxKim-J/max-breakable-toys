@@ -25,6 +25,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:apps/react-app"\
       },\
       {\
+        "name": "@breakable-toy/shared-deps-mf-host",\
+        "reference": "workspace:apps/shared-deps/mf-host"\
+      },\
+      {\
+        "name": "@breakable-toy/shared-deps-mf-remote-1",\
+        "reference": "workspace:apps/shared-deps/mf-remote-1"\
+      },\
+      {\
+        "name": "@breakable-toy/shared-deps-mf-remote-2",\
+        "reference": "workspace:apps/shared-deps/mf-remote-2"\
+      },\
+      {\
+        "name": "@breakable-toy/shared-deps-mf-package",\
+        "reference": "workspace:apps/shared-deps/mf-shared-pkg"\
+      },\
+      {\
         "name": "@breakable-toy/dev-server",\
         "reference": "workspace:tools/dev-server"\
       }\
@@ -34,7 +50,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [\
       ["@breakable-toy/apps-react", ["workspace:apps/react-app"]],\
       ["@breakable-toy/dev-server", ["workspace:tools/dev-server"]],\
-      ["@breakable-toy/root", ["workspace:."]]\
+      ["@breakable-toy/root", ["workspace:."]],\
+      ["@breakable-toy/shared-deps-mf-host", ["workspace:apps/shared-deps/mf-host"]],\
+      ["@breakable-toy/shared-deps-mf-package", ["workspace:apps/shared-deps/mf-shared-pkg"]],\
+      ["@breakable-toy/shared-deps-mf-remote-1", ["workspace:apps/shared-deps/mf-remote-1"]],\
+      ["@breakable-toy/shared-deps-mf-remote-2", ["workspace:apps/shared-deps/mf-remote-2"]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -100,6 +120,86 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-import", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:2.27.5"],\
             ["eslint-plugin-react", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:7.32.2"],\
             ["prettier", "npm:2.8.7"],\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=bda367"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@breakable-toy/shared-deps-mf-host", [\
+        ["workspace:apps/shared-deps/mf-host", {\
+          "packageLocation": "./apps/shared-deps/mf-host/",\
+          "packageDependencies": [\
+            ["@breakable-toy/shared-deps-mf-host", "workspace:apps/shared-deps/mf-host"],\
+            ["@types/react", "npm:18.0.35"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["@typescript-eslint/eslint-plugin", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["@typescript-eslint/parser", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["eslint", "npm:8.38.0"],\
+            ["eslint-config-airbnb-base", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:15.0.0"],\
+            ["eslint-plugin-import", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:2.27.5"],\
+            ["eslint-plugin-react", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:7.32.2"],\
+            ["prettier", "npm:2.8.7"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:b04cfcff8b923cf03e372c34d09556ab5e9f19438106b75a6481d03d9b4ee18e1957b4ba569e9e6d72583eea4baafffb12bc1c5fa29152650d484f050c18101d#npm:18.2.0"],\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=bda367"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@breakable-toy/shared-deps-mf-package", [\
+        ["workspace:apps/shared-deps/mf-shared-pkg", {\
+          "packageLocation": "./apps/shared-deps/mf-shared-pkg/",\
+          "packageDependencies": [\
+            ["@breakable-toy/shared-deps-mf-package", "workspace:apps/shared-deps/mf-shared-pkg"],\
+            ["@typescript-eslint/eslint-plugin", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["@typescript-eslint/parser", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["eslint", "npm:8.38.0"],\
+            ["eslint-config-airbnb-base", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:15.0.0"],\
+            ["eslint-plugin-import", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:2.27.5"],\
+            ["eslint-plugin-react", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:7.32.2"],\
+            ["prettier", "npm:2.8.7"],\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=bda367"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@breakable-toy/shared-deps-mf-remote-1", [\
+        ["workspace:apps/shared-deps/mf-remote-1", {\
+          "packageLocation": "./apps/shared-deps/mf-remote-1/",\
+          "packageDependencies": [\
+            ["@breakable-toy/shared-deps-mf-remote-1", "workspace:apps/shared-deps/mf-remote-1"],\
+            ["@types/react", "npm:18.0.35"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["@typescript-eslint/eslint-plugin", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["@typescript-eslint/parser", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["eslint", "npm:8.38.0"],\
+            ["eslint-config-airbnb-base", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:15.0.0"],\
+            ["eslint-plugin-import", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:2.27.5"],\
+            ["eslint-plugin-react", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:7.32.2"],\
+            ["prettier", "npm:2.8.7"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:b04cfcff8b923cf03e372c34d09556ab5e9f19438106b75a6481d03d9b4ee18e1957b4ba569e9e6d72583eea4baafffb12bc1c5fa29152650d484f050c18101d#npm:18.2.0"],\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=bda367"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@breakable-toy/shared-deps-mf-remote-2", [\
+        ["workspace:apps/shared-deps/mf-remote-2", {\
+          "packageLocation": "./apps/shared-deps/mf-remote-2/",\
+          "packageDependencies": [\
+            ["@breakable-toy/shared-deps-mf-remote-2", "workspace:apps/shared-deps/mf-remote-2"],\
+            ["@types/react", "npm:18.0.35"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["@typescript-eslint/eslint-plugin", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["@typescript-eslint/parser", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.58.0"],\
+            ["eslint", "npm:8.38.0"],\
+            ["eslint-config-airbnb-base", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:15.0.0"],\
+            ["eslint-plugin-import", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:2.27.5"],\
+            ["eslint-plugin-react", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:7.32.2"],\
+            ["prettier", "npm:2.8.7"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:b04cfcff8b923cf03e372c34d09556ab5e9f19438106b75a6481d03d9b4ee18e1957b4ba569e9e6d72583eea4baafffb12bc1c5fa29152650d484f050c18101d#npm:18.2.0"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=bda367"]\
           ],\
           "linkType": "SOFT"\
