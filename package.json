@@ -2,8 +2,8 @@
   "name": "@breakable-toy/root",
   "packageManager": "yarn@3.2.0",
   "workspaces": [
-    "apps/*",
-    "apps/shared-deps/*",
+    "projects/handmade-dev-server/*",
+    "projects/shared-deps/*",
     "tools/*"
   ],
   "devDependencies": {

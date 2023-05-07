@@ -5,9 +5,9 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@breakable-toy/apps-react@workspace:apps/react-app":
+"@breakable-toy/apps-react@workspace:projects/handmade-dev-server/react-app":
   version: 0.0.0-use.local
-  resolution: "@breakable-toy/apps-react@workspace:apps/react-app"
+  resolution: "@breakable-toy/apps-react@workspace:projects/handmade-dev-server/react-app"
   dependencies:
     "@types/react": ^18.0.35
     "@types/react-dom": ^18.0.11
@@ -24,9 +24,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@breakable-toy/dev-server@workspace:tools/dev-server":
+"@breakable-toy/dev-server@workspace:projects/handmade-dev-server/dev-server":
   version: 0.0.0-use.local
-  resolution: "@breakable-toy/dev-server@workspace:tools/dev-server"
+  resolution: "@breakable-toy/dev-server@workspace:projects/handmade-dev-server/dev-server"
   dependencies:
     "@parcel/watcher": ^2.1.0
     fastify: ^4.15.0
@@ -51,9 +51,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@breakable-toy/shared-deps-mf-host@workspace:apps/shared-deps/mf-host":
+"@breakable-toy/shared-deps-mf-host@workspace:projects/shared-deps/mf-host":
   version: 0.0.0-use.local
-  resolution: "@breakable-toy/shared-deps-mf-host@workspace:apps/shared-deps/mf-host"
+  resolution: "@breakable-toy/shared-deps-mf-host@workspace:projects/shared-deps/mf-host"
   dependencies:
     "@swc/core": ^1.2.215
     "@types/react": ^18.0.35
@@ -77,9 +77,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@breakable-toy/shared-deps-mf-remote-1@workspace:apps/shared-deps/mf-remote-1":
+"@breakable-toy/shared-deps-mf-remote-1@workspace:projects/shared-deps/mf-remote-1":
   version: 0.0.0-use.local
-  resolution: "@breakable-toy/shared-deps-mf-remote-1@workspace:apps/shared-deps/mf-remote-1"
+  resolution: "@breakable-toy/shared-deps-mf-remote-1@workspace:projects/shared-deps/mf-remote-1"
   dependencies:
     "@swc/core": ^1.2.215
     "@types/react": ^18.0.35
@@ -102,9 +102,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@breakable-toy/shared-deps-mf-remote-2@workspace:apps/shared-deps/mf-remote-2":
+"@breakable-toy/shared-deps-mf-remote-2@workspace:projects/shared-deps/mf-remote-2":
   version: 0.0.0-use.local
-  resolution: "@breakable-toy/shared-deps-mf-remote-2@workspace:apps/shared-deps/mf-remote-2"
+  resolution: "@breakable-toy/shared-deps-mf-remote-2@workspace:projects/shared-deps/mf-remote-2"
   dependencies:
     "@swc/core": ^1.2.215
     "@types/react": ^18.0.35
@@ -4666,9 +4666,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shared-deps-mf-package@workspace:apps/shared-deps/mf-shared-pkg":
+"shared-deps-mf-package@workspace:projects/shared-deps/mf-shared-pkg":
   version: 0.0.0-use.local
-  resolution: "shared-deps-mf-package@workspace:apps/shared-deps/mf-shared-pkg"
+  resolution: "shared-deps-mf-package@workspace:projects/shared-deps/mf-shared-pkg"
   dependencies:
     "@swc/core": ^1.2.215
     "@types/react": ^18.0.35
