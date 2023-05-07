@@ -1,9 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { ModuleLoader } from './DynamicRemoteLoader';
 
 import { getVersion, getId } from 'shared-deps-mf-package';
-
-const Remote1 = lazy(() => import('remote1/App'));
-const Remote2 = lazy(() => import('remote2/App'));
 
 function App() {
   return (
@@ -13,15 +10,19 @@ function App() {
       <p>Host의 공유 패키지 Id {getId()}</p>
       <div>
         <h2>Remote 1</h2>
-        <Suspense fallback={<div>Remote 1 Loading</div>}>
-          <Remote1 />
-        </Suspense>
+        <ModuleLoader
+          scope="remote1"
+          module="./App"
+          url="http://localhost:3001/remoteEntry.js"
+        />
       </div>
       <div>
         <h2>Remote 2</h2>
-        <Suspense fallback={<div>Remote 2 Loading</div>}>
-          <Remote2 />
-        </Suspense>
+        <ModuleLoader
+          scope="remote2"
+          module="./App"
+          url="http://localhost:3002/remoteEntry.js"
+        />
       </div>
     </div>
   );
