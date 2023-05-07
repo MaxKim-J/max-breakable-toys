@@ -10,5 +10,5 @@
 !.yarn/cache
 #.pnp.*
 
-.idea/*
+.idea
 dist
