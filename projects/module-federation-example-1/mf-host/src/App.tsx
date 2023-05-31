@@ -1,8 +1,9 @@
 import { Suspense, lazy } from 'react';
 
+import Remote2 from 'remote2/App';
+
 function App() {
   const Remote1 = lazy(() => import('remote1/App'));
-  const Remote2 = lazy(() => import('remote2/App'));
 
   return (
     <div>
@@ -15,9 +16,7 @@ function App() {
       </div>
       <div>
         <h2>Remote 2</h2>
-        <Suspense fallback={<div>loading Remote 1</div>}>
-          <Remote2 />
-        </Suspense>
+        <Remote2 />
       </div>
     </div>
   );
