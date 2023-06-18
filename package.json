@@ -7,6 +7,7 @@
     "projects/shared-deps/*",
     "projects/module-federation-example-1/*",
     "projects/module-federation-example-2/*",
+    "projects/*",
     "tools/*"
   ],
   "scripts": {
