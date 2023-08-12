@@ -38,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'remote1',
+      name: 'remote2',
       filename: 'remoteEntry.js',
       exposes: {
         './App': './src/App.tsx',
@@ -51,12 +51,6 @@ module.exports = {
         'react-dom': {
           singleton: true,
           version: '18.2.0',
-        },
-        'shared-deps-mf-package': {
-          version: '1.0.9',
-        },
-        'lodash.camelcase': {
-          version: '^4.3.0',
         },
       },
     }),

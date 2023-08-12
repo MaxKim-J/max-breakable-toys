@@ -1,5 +1,6 @@
 const path = require('node:path');
 const { ModuleFederationPlugin } = require('webpack').container;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -37,11 +38,15 @@ module.exports = {
     ],
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      hash: false,
+    }),
     new ModuleFederationPlugin({
-      name: 'remote1',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './App': './src/App.tsx',
+      name: 'host',
+      remotes: {
+        remote1: 'remote1@http://localhost:3001/remoteEntry.js',
+        remote2: 'remote2@http://localhost:3002/remoteEntry.js',
       },
       shared: {
         react: {
@@ -51,12 +56,6 @@ module.exports = {
         'react-dom': {
           singleton: true,
           version: '18.2.0',
-        },
-        'shared-deps-mf-package': {
-          version: '1.0.9',
-        },
-        'lodash.camelcase': {
-          version: '^4.3.0',
         },
       },
     }),

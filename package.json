@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "turbo:start-mf1": "turbo run start --filter='@breakable-toy/module-federation-example-1*'",
-    "turbo:start-mf2": "turbo run start --filter='@breakable-toy/module-federation-example-2*'"
+    "turbo:start-mf2": "turbo run start --filter='@breakable-toy/module-federation-example-2*'",
+    "turbo:start-shared-deps": "turbo run start --filter='@breakable-toy/shared-deps-mf*'"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.58.0",
