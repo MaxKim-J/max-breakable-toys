@@ -5,11 +5,13 @@
   "private": true,
   "scripts": {
     "start": "rm -rf dist && yarn build && yarn serve",
+    "dev": "mf dev",
     "build": "webpack --config webpack.config.js",
     "serve": "node server.js",
     "type-check": "tsc"
   },
   "dependencies": {
+    "@breakable-toy/dev-server": "workspace:^",
     "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

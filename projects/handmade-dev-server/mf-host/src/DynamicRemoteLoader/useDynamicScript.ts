@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 
-export const useDynamicScript = (args) => {
+export const useDynamicScript = (url: string) => {
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    if (!args.url) {
+    if (!url) {
       return;
     }
 
     const element = document.createElement('script');
 
-    element.src = args.url;
+    element.src = url;
     element.type = 'text/javascript';
     element.async = true;
 
@@ -19,12 +19,12 @@ export const useDynamicScript = (args) => {
     setFailed(false);
 
     element.onload = () => {
-      console.log(`Dynamic Script Loaded: ${args.url}`);
+      console.log(`Dynamic Script Loaded: ${url}`);
       setReady(true);
     };
 
     element.onerror = () => {
-      console.error(`Dynamic Script Error: ${args.url}`);
+      console.error(`Dynamic Script Error: ${url}`);
       setReady(false);
       setFailed(true);
     };
@@ -32,10 +32,10 @@ export const useDynamicScript = (args) => {
     document.head.appendChild(element);
 
     return () => {
-      console.log(`Dynamic Script Removed: ${args.url}`);
+      console.log(`Dynamic Script Removed: ${url}`);
       document.head.removeChild(element);
     };
-  }, [args.url]);
+  }, [url]);
 
   return {
     ready,

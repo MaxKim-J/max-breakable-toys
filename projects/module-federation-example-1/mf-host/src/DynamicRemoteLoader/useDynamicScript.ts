@@ -31,10 +31,10 @@ export const useDynamicScript = (args) => {
 
     document.head.appendChild(element);
 
-    return () => {
-      console.log(`Dynamic Script Removed: ${args.url}`);
-      document.head.removeChild(element);
-    };
+    // return () => {
+    //   console.log(`Dynamic Script Removed: ${args.url}`);
+    //   document.head.removeChild(element);
+    // };
   }, [args.url]);
 
   return {

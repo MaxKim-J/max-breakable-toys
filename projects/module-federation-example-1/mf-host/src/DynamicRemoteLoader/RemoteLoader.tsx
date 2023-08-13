@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
 import { useDynamicScript } from './useDynamicScript';
 
 export function ModuleLoader({
@@ -26,7 +26,7 @@ export function ModuleLoader({
     return <h2>Failed to load dynamic script: {url}</h2>;
   }
 
-  const Component = lazy(loadComponent(scope, module));
+  const Component = useMemo(() => lazy(loadComponent(scope, module)), []);
 
   return (
     <Suspense fallback={`Loading Module ${module}`}>
