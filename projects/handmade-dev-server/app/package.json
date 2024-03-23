@@ -1,11 +1,13 @@
 {
-  "name": "@handmade/app",
+  "name": "@breakable-toys/dev-server-app",
   "packageManager": "yarn@3.5.1",
   "types": "module",
   "scripts": {
-    "dev": "node dev-server/run.mjs"
+    "dev": "node dev-server/run.mjs",
+    "dev:dev": "nodemon dev-server/run.mjs"
   },
   "dependencies": {
+    "@breakable-toys/dev-server-package": "workspace:^",
     "@fastify/static": "^7.0.1",
     "fastify": "^4.26.2",
     "react": "^18.2.0",
@@ -24,6 +26,7 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
     "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^3.1.0",
     "prettier": "^2.8.7",
     "swc-loader": "^0.2.3",
     "typescript": "^5.0.4",

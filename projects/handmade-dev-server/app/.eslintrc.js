@@ -1,3 +1,3 @@
 module.exports = {
-  extends: require.resolve('../../_configs/eslint/.eslintrc.react.js'),
+  extends: require.resolve('../../../_configs/eslint/.eslintrc.react.js'),
 };

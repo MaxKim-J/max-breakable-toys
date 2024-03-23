@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Component } from '@breakable-toys/dev-server-package';
+import { Component2 } from './Component/Component2';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,11 +15,10 @@ function App() {
 
   return (
     <main>
-      <h1>Count</h1>
+      <h1>You`re dev server must be handmaded!</h1>
       <div>
-        <div>{count}</div>
-        <button onClick={increase}>increase</button>
-        <button onClick={decrease}>decrease</button>
+        <Component />
+        <Component2 />
       </div>
     </main>
   );

@@ -3,10 +3,9 @@ import fs from 'node:fs/promises';
 import { build } from 'esbuild';
 
 const rootDir = process.env.PROJECT_CWD;
-const webpackConfigPath = `${rootDir}/webpack.config.mjs`;
-const packageJsonPath = `${rootDir}/package.json`;
-
-// 파일 루트에서 webpack config를 찾아야
+const packageDir = path.resolve(rootDir, 'projects/handmade-dev-server/app');
+const webpackConfigPath = `${packageDir}/webpack.config.mjs`;
+const packageJsonPath = `${packageDir}/package.json`;
 
 async function transpileAndExecuteBinScript() {
   try {
@@ -27,7 +26,7 @@ const transpileBinScript = async () => {
 
 const executeBinScript = async () => {
   const { runDevServer } = await import(
-    path.resolve(rootDir, './__temp/server.mjs')
+    path.resolve(packageDir, './__temp/server.mjs')
   );
   const { default: webpackConfig } = await import(webpackConfigPath);
 
@@ -36,13 +35,13 @@ const executeBinScript = async () => {
 
 const getEsbuildConfig = async () => {
   const pkg = await loadJSON(packageJsonPath);
+
+  const entryPoints = [path.resolve(packageDir, './dev-server/server.ts')];
+  const outdir = path.resolve(packageDir, './__temp');
   const external = Object.keys({ ...pkg.dependencies, ...pkg.devDependencies });
 
-  const entryPoint = path.resolve(rootDir, './dev-server/server.ts');
-  const outdir = path.resolve(rootDir, './__temp');
-
   return {
-    entryPoints: [entryPoint],
+    entryPoints,
     outdir,
     bundle: true,
     write: true,
