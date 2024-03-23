@@ -1,0 +1,27 @@
+{
+  "name": "@breakable-toy/dev-server",
+  "description": "핸드메이드 데브 서버",
+  "packageManager": "yarn@3.2.0",
+  "types": "module",
+  "private": true,
+  "bin": {
+    "mf": "bin/run.mjs"
+  },
+  "devDependencies": {
+    "@fastify/static": "^6.10.2",
+    "@parcel/watcher": "^2.1.0",
+    "@swc/core": "^1.3.76",
+    "@vercel/nft": "^0.23.0",
+    "@yarnpkg/pnp": "^4.0.0-rc.48",
+    "@yarnpkg/pnpify": "^4.0.0-rc.48",
+    "clipanion": "^4.0.0-rc.2",
+    "enhanced-resolve": "^5.15.0",
+    "esbuild": "^0.19.1",
+    "fastify": "^4.15.0",
+    "fastify-static": "^4.7.0",
+    "html-webpack-plugin": "^5.5.0",
+    "pnpapi": "^0.0.0",
+    "webpack": "^5.88.2",
+    "zx": "^7.2.1"
+  }
+}
