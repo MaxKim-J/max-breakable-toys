@@ -27,8 +27,5 @@
     "prettier": "^2.8.7",
     "turbo": "^1.9.9",
     "typescript": "^5.0.4"
-  },
-  "dependencies": {
-    "fastify": "^4.26.2"
   }
 }
