@@ -17,6 +17,7 @@
     "turbo:start-shared-deps": "turbo run start --filter='@breakable-toy/shared-deps-mf*'"
   },
   "devDependencies": {
+    "@types/node": "^18.19.1",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
     "eslint": "^8.38.0",

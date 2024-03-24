@@ -1,4 +1,6 @@
 {
   "verbose": true,
-  "ignore": ["__temp", "dist"]
+  "ignore": ["__temp", "dist"],
+  "watch": ["./dev-server/"],
+  "ext": "ts,tsx,json"
 }

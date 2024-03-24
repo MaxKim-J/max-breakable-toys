@@ -9,13 +9,17 @@
   "dependencies": {
     "@breakable-toys/dev-server-package": "workspace:^",
     "@fastify/static": "^7.0.1",
+    "enhanced-resolve": "^5.16.0",
     "fastify": "^4.26.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "webpack": "^5.91.0"
+    "webpack": "^5.91.0",
+    "zx": "^7.2.3"
   },
   "devDependencies": {
     "@swc/core": "^1.2.215",
+    "@types/enhanced-resolve": "^5.0.0",
+    "@types/node": "^18.19.1",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.58.0",

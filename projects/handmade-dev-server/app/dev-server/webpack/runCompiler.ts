@@ -4,9 +4,7 @@ interface Params {
   webpackConfig: Configuration;
 }
 
-export const runWebpackCompiler = async ({
-  webpackConfig,
-}: Params): Promise<void> => {
+export const runCompiler = async ({ webpackConfig }: Params): Promise<void> => {
   const compiler = webpack(webpackConfig);
 
   await new Promise((resolve, reject) => {

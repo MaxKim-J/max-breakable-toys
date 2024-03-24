@@ -370,6 +370,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@breakable-toy/root@workspace:."
   dependencies:
+    "@types/node": ^18.19.1
     "@typescript-eslint/eslint-plugin": ^5.58.0
     "@typescript-eslint/parser": ^5.58.0
     eslint: ^8.38.0
@@ -468,10 +469,13 @@ __metadata:
     "@breakable-toys/dev-server-package": "workspace:^"
     "@fastify/static": ^7.0.1
     "@swc/core": ^1.2.215
+    "@types/enhanced-resolve": ^5.0.0
+    "@types/node": ^18.19.1
     "@types/react": ^18.0.35
     "@types/react-dom": ^18.0.11
     "@typescript-eslint/eslint-plugin": ^5.58.0
     "@typescript-eslint/parser": ^5.59.2
+    enhanced-resolve: ^5.16.0
     esbuild: ^0.20.2
     eslint: ^8.57.0
     eslint-config-airbnb-base: ^15.0.0
@@ -487,6 +491,7 @@ __metadata:
     typescript: ^5.0.4
     webpack: ^5.56.0
     webpack-cli: ^4.8.0
+    zx: ^7.2.3
   languageName: unknown
   linkType: soft
 
@@ -495,6 +500,7 @@ __metadata:
   resolution: "@breakable-toys/dev-server-package@workspace:projects/handmade-dev-server/package"
   dependencies:
     "@swc/core": ^1.2.215
+    "@types/node": ^18.19.1
     "@types/react": ^18.0.35
     "@types/react-dom": ^18.0.11
     "@typescript-eslint/eslint-plugin": ^5.58.0
@@ -1550,6 +1556,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/enhanced-resolve@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "@types/enhanced-resolve@npm:5.0.0"
+  dependencies:
+    enhanced-resolve: "*"
+  checksum: c80340c4dc2d7bb548881cd08e43567cc4a6dcba698609ce8626fd3e9525f06b698ea730d5035f724ee130bdd4849e4be8e91522c27b7de368cf1051d91876b3
+  languageName: node
+  linkType: hard
+
 "@types/eslint-scope@npm:^3.7.3":
   version: 3.7.4
   resolution: "@types/eslint-scope@npm:3.7.4"
@@ -1737,6 +1752,15 @@ __metadata:
   version: 18.16.16
   resolution: "@types/node@npm:18.16.16"
   checksum: 0efad726dd1e0bef71c392c708fc5d78c5b39c46b0ac5186fee74de4ccb1b2e847b3fa468da67d62812f56569da721b15bf31bdc795e6c69b56c73a45079ed2d
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^18.19.1":
+  version: 18.19.26
+  resolution: "@types/node@npm:18.19.26"
+  dependencies:
+    undici-types: ~5.26.4
+  checksum: d72d4e7e520206a2a05cb3e03a73696fc3bdcdc6ba5330a75cfef4818cb137b260c32dfe85e8b4ea28e8fe92f1d1497e26336c607254c5eaf47032a1b1c8bb6e
   languageName: node
   linkType: hard
 
@@ -3630,6 +3654,16 @@ __metadata:
   dependencies:
     once: ^1.4.0
   checksum: 530a5a5a1e517e962854a31693dbb5c0b2fc40b46dad2a56a2deec656ca040631124f4795823acc68238147805f8b021abbe221f4afed5ef3c8e8efc2024908b
+  languageName: node
+  linkType: hard
+
+"enhanced-resolve@npm:*, enhanced-resolve@npm:^5.16.0":
+  version: 5.16.0
+  resolution: "enhanced-resolve@npm:5.16.0"
+  dependencies:
+    graceful-fs: ^4.2.4
+    tapable: ^2.2.0
+  checksum: ccfd01850ecf2aa51e8554d539973319ff7d8a539ef1e0ba3460a0ccad6223c4ef6e19165ee64161b459cd8a48df10f52af4434c60023c65fde6afa32d475f7e
   languageName: node
   linkType: hard
 
@@ -8639,6 +8673,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~5.26.4":
+  version: 5.26.5
+  resolution: "undici-types@npm:5.26.5"
+  checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^2.0.0":
   version: 2.0.1
   resolution: "unique-filename@npm:2.0.1"
@@ -9146,5 +9187,30 @@ __metadata:
   bin:
     zx: build/cli.js
   checksum: 6d9538001c7d989639384f493070fdacf3a87627cec230cb8bb142a869a5b7375417c9a31f1ff74697fd37a4f6e9ab62223a07703a2cb8e84ddb9a2b7a17d251
+  languageName: node
+  linkType: hard
+
+"zx@npm:^7.2.3":
+  version: 7.2.3
+  resolution: "zx@npm:7.2.3"
+  dependencies:
+    "@types/fs-extra": ^11.0.1
+    "@types/minimist": ^1.2.2
+    "@types/node": ^18.16.3
+    "@types/ps-tree": ^1.1.2
+    "@types/which": ^3.0.0
+    chalk: ^5.2.0
+    fs-extra: ^11.1.1
+    fx: "*"
+    globby: ^13.1.4
+    minimist: ^1.2.8
+    node-fetch: 3.3.1
+    ps-tree: ^1.2.0
+    webpod: ^0
+    which: ^3.0.0
+    yaml: ^2.2.2
+  bin:
+    zx: build/cli.js
+  checksum: 33b05e26ec3a429de6ff8db759d7b7857b947f4845025416db410bedaa8e613608a6d1916f257e129625d0192b6ba43e482356c6844ff90d15b0fd06dd9b98d2
   languageName: node
   linkType: hard
