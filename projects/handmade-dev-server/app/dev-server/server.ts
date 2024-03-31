@@ -6,7 +6,7 @@ import process from 'process';
 import { Configuration } from 'webpack';
 import { type SubscribeCallback } from '@parcel/watcher';
 
-import { rootDir } from './constants';
+import { projectRootDir } from './constants';
 import { runCompiler } from './webpack/runCompiler';
 import { getWatchPaths } from './watcher/getWatchPaths';
 import { watcher } from './watcher/watcher';
@@ -18,15 +18,24 @@ interface Params {
   webpackConfig: Configuration;
 }
 
+let closer: null | (() => Promise<void>) = null;
+
+const cleanUpAndShutdown = async () => {
+  if (closer !== null) {
+    await closer();
+  }
+  console.log(`[dev-server] Watcher와 Socket을 정리하고 서버를 종료합니다.`);
+  process.exit();
+};
+
 export const runDevServer = async ({ webpackConfig }: Params) => {
-  // TODO: parseWebpackConfig
-  const entry = webpackConfig.entry as string; // 배열일수도 있긴 한데 일단
+  const entry = webpackConfig.entry as string; // 배열일수도 있긴 한데 일단 대충 요렇게 해놓음
   const outputAbsolutePath = path.resolve(
-    rootDir,
+    projectRootDir,
     webpackConfig?.output?.path ?? 'dist'
   );
 
-  // TODO 1. watch할 디렉토리를 선별하고 file descriptor를 달아준다.
+  // 1. watch할 디렉토리(파일아님)를 미리 선별한다. 파일 descriptor를 디렉토리에만 달아준다.
   const watchPaths = await getWatchPaths(entry);
   console.info(
     `[dev-server] watcher가 다음 ${watchPaths.length}개의 디렉토리들을 워치합니다`,
@@ -37,8 +46,6 @@ export const runDevServer = async ({ webpackConfig }: Params) => {
 
   // 2. dev server 시작
   const start = async () => {
-    // TODO 3. 웹소켓열어주기
-
     app.register(fastifyStatic, {
       root: outputAbsolutePath,
     });
@@ -46,48 +53,48 @@ export const runDevServer = async ({ webpackConfig }: Params) => {
       options: { maxPayload: 1048576 },
     });
 
+    // 4. 소켓 엔드포인트 등록
     app.register(async (app) => {
       console.log(
         `[dev-server] 브라우저로 변경 정보를 알려줄 웹소켓 엔드포인트(/dev-server)를 셋업합니다.`
       );
       // @ts-ignore - fastify plugin에서 declare한 것을 override못함 왜일까
       app.get('/dev-server', { websocket: true }, async (socket, request) => {
+        const subscribeCallback: SubscribeCallback = async (err, events) => {
+          const eventsFile = events.map((it) => `${it.path}`);
+
+          // @ts-ignore
+          socket.send(
+            createMessage({
+              type: 'notice',
+              text: `[dev-server] 아래 파일들의 수정이 감지되었습니다.\n${eventsFile.join(
+                '\n'
+              )}`,
+            })
+          );
+
+          console.info(
+            `\n[dev-server] 아래 파일들의 수정이 감지되었습니다.\n${eventsFile.join(
+              '\n'
+            )}`
+          );
+
+          await runCompiler({ webpackConfig });
+
+          // @ts-ignore
+          socket.send(
+            createMessage({
+              type: 'modify',
+              text: `[dev-server] 웹팩 리컴파일을 완료했습니다.`,
+            })
+          );
+
+          console.info(`[dev-server] 웹팩 리컴파일을 완료했습니다.`);
+        };
+
         const cleanUpWatcher = await watcher({
           watchPaths,
-          subscribeCallback: async (err, events) => {
-            const eventsFile = events.map((it) => `${it.path}`);
-
-            // @ts-ignore
-            socket.send(
-              createMessage({
-                type: 'notice',
-                text: `[dev-server] 아래 파일들의 수정이 감지되었습니다.\n${eventsFile.join(
-                  '\n'
-                )}`,
-              })
-            );
-
-            console.info(
-              `\n[dev-server] 아래 파일들의 수정이 감지되었습니다.\n${eventsFile.join(
-                '\n'
-              )}`
-            );
-
-            await runCompiler({ webpackConfig });
-
-            // @ts-ignore
-            socket.send(
-              createMessage({
-                type: 'modify',
-                text: `[dev-server] 웹팩 리컴파일을 완료했습니다.`,
-              })
-            );
-
-            console.info(`[dev-server] 웹팩 리컴파일을 완료했습니다.`);
-
-            // TODO 3. 웹소켓으로 브라우저에 메시지를 전달해준다
-            // 웹 소켓 센드를 넣어야하는데 어캐해야하노 + close를 하면 watcher를 닫느다
-          },
+          subscribeCallback,
         });
 
         // @ts-ignore
@@ -100,15 +107,12 @@ export const runDevServer = async ({ webpackConfig }: Params) => {
           socket.send(message);
         });
 
-        // 서버가 죽으면 소켓과 워처를 죽인다
-        process.on('SIGINT', async () => {
+        // close 등록
+        closer = async () => {
           await cleanUpWatcher();
           // @ts-ignore
           socket.close();
-          console.log(
-            `[dev-server] 서버를 종료합니다. Watcher와 Socket을 정리합니다.`
-          );
-        });
+        };
       });
     });
 
@@ -127,6 +131,17 @@ export const runDevServer = async ({ webpackConfig }: Params) => {
       console.info('compile error');
       console.info(e);
     }
+
+    // 5. 프로세스를 suspend, cease했을 때 자원 클린업
+    process.on('SIGINT', async () => {
+      app.close();
+      await cleanUpAndShutdown();
+    });
+
+    process.on('SIGTSTP', async () => {
+      app.close();
+      await cleanUpAndShutdown();
+    });
   };
 
   await start();

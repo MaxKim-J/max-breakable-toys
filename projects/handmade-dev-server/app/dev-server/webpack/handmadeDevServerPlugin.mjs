@@ -1,5 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const entryScriptId = 'handmade-dev-server-script';
+
 const getWebSocketScript = () => `
 // Connect to WebSocket
 var socket = new WebSocket('ws://localhost:3000/dev-server');
@@ -17,20 +19,16 @@ socket.onmessage = function(event) {
 
   if (message.type === 'modify') {
     console.log(message.text);
-    const script = document.querySelector('#handmade-dev-server-script');
-    console.info(script);
+    const script = document.querySelector('#${entryScriptId}');
 
     if (script) {
       script.parentNode.removeChild(script);
       const newScript = document.createElement('script');
       newScript.src = 'main.js';
-      newScript.id = 'handmade-dev-server-script';
+      newScript.id = '${entryScriptId}';
       document.head.appendChild(newScript);
     }
   }
-  // 수정되었을때 뭔갈 하는 코드(새로고침이라던지, rrf연동이라던지)
-  // replace하기
-
 };
 
 socket.onclose = function(event) {
@@ -67,7 +65,7 @@ class handmadeDevServerPlugin {
 
           data.bodyTags.push(wsScript);
 
-          data.headTags[0].attributes['id'] = 'handmade-dev-server-script';
+          data.headTags[0].attributes['id'] = entryScriptId;
 
           cb(null, data);
         }

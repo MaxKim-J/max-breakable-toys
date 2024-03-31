@@ -1,10 +1,10 @@
-import { promises as fsPromises, watch } from 'fs';
+import { promises as fsPromises } from 'fs';
 import path from 'path';
 
 import { resolve } from './resolver';
 import { getWorkspacePackageLocationMap } from './getWorkspacePackages';
 
-import { projectRootDir, executeDir } from '../constants';
+import { workspaceRootDir, executeDir } from '../constants';
 
 interface ProcessParams {
   watchPaths: string[];
@@ -51,6 +51,7 @@ const searchWatchPath = async ({
     // TODO: 하고 또 해당 패키지의 엔트리로 들어가서 다시 파일 순회를 해야한다
     // TODO: 파일 순회를 할때 export path를 리졸브하면 필연적으로 배럴파일을 지나면서 watch할 디렉토리가 많아지는데 이걸 최적화할 수 없을지?
     const workspaceLoc = workspaceLocationMap[importSource];
+
     if (!isRelativeImportSource && workspaceLoc !== undefined) {
       watchPaths = [...watchPaths, workspaceLoc];
       return watchPaths;
@@ -62,7 +63,7 @@ const searchWatchPath = async ({
 
 export const getWatchPaths = async (entry: string) => {
   const workspaceLocationMap = await getWorkspacePackageLocationMap(
-    projectRootDir
+    workspaceRootDir
   );
 
   // 루트 디렉토리가 진짜 웹팩 엔트리의 dir가 아닐수도 있긴! 하다, 그냥 해당 패키지 전체를 그냥 watch해야할 수도

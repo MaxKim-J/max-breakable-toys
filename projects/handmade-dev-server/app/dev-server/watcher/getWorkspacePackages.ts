@@ -14,6 +14,7 @@ const EXCLUDE_DIR_REGEX = [
   /.*\.node_modules.*/,
 ];
 
+// 루트디렉토리에서 시작
 async function getWorkspacePackages(targetPath: string) {
   let packages: Array<PackageInfo> = [];
 
