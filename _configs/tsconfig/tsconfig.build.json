@@ -6,6 +6,6 @@
     "incremental": true,
     "declaration": true,
     "outFile": "./",
-    "outDir": "./dist",
+    "outDir": "./dist"
   }
 }

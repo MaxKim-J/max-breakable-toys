@@ -12,6 +12,7 @@ export const watcher = async ({ watchPaths, subscribeCallback }: Params) => {
 
   const cleanUp = async () => {
     await Promise.all(subscriptions.map((subs) => subs.unsubscribe()));
+    console.info('[dev-server] 열려있는 watcher을 제거합니다.');
   };
 
   return cleanUp;

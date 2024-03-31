@@ -65,6 +65,7 @@ export const getWatchPaths = async (entry: string) => {
     projectRootDir
   );
 
+  // 루트 디렉토리가 진짜 웹팩 엔트리의 dir가 아닐수도 있긴! 하다, 그냥 해당 패키지 전체를 그냥 watch해야할 수도
   const watchPathIncludedEntry = [
     path.dirname(path.resolve(executeDir, entry)),
   ];

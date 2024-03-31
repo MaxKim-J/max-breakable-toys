@@ -134,6 +134,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@types/node", "npm:18.19.26"],\
+            ["@types/ws", "npm:8.5.10"],\
             ["@typescript-eslint/eslint-plugin", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.59.8"],\
             ["@typescript-eslint/parser", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.59.8"],\
             ["eslint", "npm:8.41.0"],\
@@ -543,6 +544,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@breakable-toy/root", "workspace:."],\
             ["@types/node", "npm:18.19.26"],\
+            ["@types/ws", "npm:8.5.10"],\
             ["@typescript-eslint/eslint-plugin", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.59.8"],\
             ["@typescript-eslint/parser", "virtual:e5be6e63f957985770aad556556aecedf367b82b499869e0301e0e3f1a6546c09c49f8ec3ca7e3598beddc83558af5ed1d4fff99ef78cdcd4c3aa4be2f1b171c#npm:5.59.8"],\
             ["eslint", "npm:8.41.0"],\
@@ -647,6 +649,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@breakable-toys/dev-server-app", "workspace:projects/handmade-dev-server/app"],\
             ["@breakable-toys/dev-server-package", "workspace:projects/handmade-dev-server/package"],\
             ["@fastify/static", "npm:7.0.1"],\
+            ["@fastify/websocket", "npm:10.0.1"],\
             ["@parcel/watcher", "npm:2.4.1"],\
             ["@swc/core", "virtual:11dd05db2279b29925803b74f5326de842cdb9e3527b71a9a9df45913ef50aa365509122b8fbf527f6c1877eddf00d77db9f160220b4cb983c2e32042018f144#npm:1.3.61"],\
             ["@types/enhanced-resolve", "npm:5.0.0"],\
@@ -1282,6 +1285,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fastify-plugin", "npm:4.5.1"],\
             ["fastq", "npm:1.17.1"],\
             ["glob", "npm:10.3.10"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@fastify/websocket", [\
+        ["npm:10.0.1", {\
+          "packageLocation": "./.yarn/cache/@fastify-websocket-npm-10.0.1-fbab06875c-8a2ccf1bf6.zip/node_modules/@fastify/websocket/",\
+          "packageDependencies": [\
+            ["@fastify/websocket", "npm:10.0.1"],\
+            ["duplexify", "npm:4.1.3"],\
+            ["fastify-plugin", "npm:4.5.1"],\
+            ["ws", "virtual:05e569ca2ff182b8ab314978f597403aaf6bbd598856b3da9f1865ea42d524a5846b102948188f6894c6b3f5c577b1ad84345dc7ee0ba3f05a1087ca6d9b679f#npm:8.16.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5450,6 +5465,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/duplexer-npm-0.1.2-952c810235-62ba61a830.zip/node_modules/duplexer/",\
           "packageDependencies": [\
             ["duplexer", "npm:0.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["duplexify", [\
+        ["npm:4.1.3", {\
+          "packageLocation": "./.yarn/cache/duplexify-npm-4.1.3-f0053971e9-9636a02734.zip/node_modules/duplexify/",\
+          "packageDependencies": [\
+            ["duplexify", "npm:4.1.3"],\
+            ["end-of-stream", "npm:1.4.4"],\
+            ["inherits", "npm:2.0.4"],\
+            ["readable-stream", "npm:3.6.2"],\
+            ["stream-shift", "npm:1.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -10665,6 +10693,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["stream-combiner", "npm:0.0.4"],\
             ["duplexer", "npm:0.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["stream-shift", [\
+        ["npm:1.0.3", {\
+          "packageLocation": "./.yarn/cache/stream-shift-npm-1.0.3-c1c29210c7-a24c0a3f66.zip/node_modules/stream-shift/",\
+          "packageDependencies": [\
+            ["stream-shift", "npm:1.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\

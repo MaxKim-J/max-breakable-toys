@@ -1,7 +1,7 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import HandmadePlugin from './dev-server/webpack/handmadeDevServerPlugin.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,7 +42,7 @@ const config = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    new HandmadePlugin({
       template: './public/index.html',
       hash: false,
     }),
