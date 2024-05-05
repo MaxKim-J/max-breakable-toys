@@ -29,7 +29,9 @@ const cleanUpAndShutdown = async () => {
 };
 
 export const runDevServer = async ({ webpackConfig }: Params) => {
-  const entry = webpackConfig.entry as string; // 배열일수도 있긴 한데 일단 대충 요렇게 해놓음
+  // todo: 여기서 받는건 무조건 object
+  const entry = (webpackConfig?.entry as { app: string }).app;
+
   const outputAbsolutePath = path.resolve(
     projectRootDir,
     webpackConfig?.output?.path ?? 'dist'

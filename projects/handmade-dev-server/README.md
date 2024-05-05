@@ -2,12 +2,6 @@
 
 수제 React 데브 서버를 만들어본다 + 스코프 작게
 
-- [x] React
-- [x] Watcher
-- [x] Web Socket
-- [x] Recompile(Dev Middleware)
-- [ ] React Refresh
-
 ## 요구사항
 
 ### 개발 바닥깔기
@@ -26,13 +20,21 @@
 
 ### live reload
 
+파일이 변경될 때 전체 어플리케이션을 다시 로드합니다. 이러한 방식은 코드 변경 후 전체 페이지를 새로 로드해야 하는 경우 유용할 수 있지만, 상태가 초기화되는 단점이 있습니다.
+
 - [x] 새로고침을 하면 새로운 번들로 바뀐다.
 
 ### HMR
 
-- [ ] HMR을 연동해서 새로고침 없이 코드 수정시 바뀐 부분만 새로 로드한다.
+HMR은 전체 페이지를 다시 로드하지 않고 변경된 모듈만 업데이트합니다. 이는 변경 사항이 즉시 반영되고 애플리케이션의 상태를 유지함으로써 개발 효율성을 증가시킵니다. 하지만 모든 모듈이 HMR을 지원하지 않을 수 있으며, 구성이 더 복잡할 수 있습니다.
+
+- [x] HMR을 연동 후 새로고침 없이 코드 수정시 바뀐 부분만 새로 로드
+- [ ] 플러그인 통한 단일 엔트리 상대경로 계산 및 자동 코드 삽입(custom loader?)
+- [ ] 동적 import 지원
 
 ### fast refresh
+
+React Native에서 도입된 기능으로, HMR을 기반으로 하지만 개발자 경험을 개선하기 위해 추가적인 기능들을 제공합니다. Fast Refresh는 컴포넌트 상태를 유지하면서 React 컴포넌트를 실시간으로 업데이트합니다.
 
 - [ ] react-refresh를 Webpack Custom Plugin으로 연동한다.
 
@@ -44,14 +46,5 @@
 
 ## 공부할 것
 
-- [ ] 용어정리
-- [ ] file descriptor와 성능이 가장 잘 나오는 방식
-- [ ] Web Socket
-- [ ] react-refresh의 동작 방식
-
-### 용어 정리
-
-- **Live Reload**: 파일이 변경될 때 전체 어플리케이션을 다시 로드합니다. 이러한 방식은 코드 변경 후 전체 페이지를 새로 로드해야 하는 경우 유용할 수 있지만, 상태가 초기화되는 단점이 있습니다.
-- **Hot Module Replacement (HMR)**: HMR은 전체 페이지를 다시 로드하지 않고 변경된 모듈만 업데이트합니다. 이는 변경 사항이 즉시 반영되고 애플리케이션의 상태를 유지함으로써 개발 효율성을 증가시킵니다. 하지만 모든 모듈이 HMR을 지원하지 않을 수 있으며, 구성이 더 복잡할 수 있습니다.
-- **Fast Refresh**: 는 React Native에서 도입된 기능으로, HMR을 기반으로 하지만 개발자 경험을 개선하기 위해 추가적인 기능들을 제공합니다. Fast Refresh는 컴포넌트 상태를 유지하면서 React 컴포넌트를 실시간으로 업데이트합니다.
-- 파일 변경시 자동 새로고침(live reload), 파일 변경시 변경된 모듈만 업데이트(hmr), 파일 변경시 변경된 모듈만 업데이트 하면서 상태값까지 유지(fast refresh) - HMR에서 확장된 개념
+- https://github.com/webpack/webpack/blob/main/hot/dev-server.js
+- https://github.com/facebook/react/issues/16604#issuecomment-528663101

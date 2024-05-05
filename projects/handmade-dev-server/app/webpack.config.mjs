@@ -1,22 +1,20 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-import HandmadePlugin from './dev-server/webpack/handmadeDevServerPlugin.mjs';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const config = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
+  recordsPath: path.join(__dirname, 'records.json'),
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
-  },
-  optimization: {
-    minimize: false,
   },
   module: {
     rules: [
@@ -41,8 +39,11 @@ const config = {
       },
     ],
   },
+  optimization: {
+    runtimeChunk: 'single',
+  },
   plugins: [
-    new HandmadePlugin({
+    new HtmlWebpackPlugin({
       template: './public/index.html',
       hash: false,
     }),

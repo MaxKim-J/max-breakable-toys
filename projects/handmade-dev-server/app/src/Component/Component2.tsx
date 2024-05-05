@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export function Component2() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(10);
 
   const increase = () => {
     setCount((s) => s + 1);
@@ -13,10 +13,14 @@ export function Component2() {
 
   return (
     <div>
-      <h2>앱 본문</h2>
+      <h2>앱 본문?</h2>
       <div>{count}</div>
       <button onClick={increase}>increase</button>
       <button onClick={decrease}>decrease</button>
     </div>
   );
+}
+
+if (module.hot) {
+  module.hot.accept('../index');
 }
