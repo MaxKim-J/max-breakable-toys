@@ -1,5 +1,10 @@
 interface SocketMessageType {
-  type: 'notice' | 'modify';
+  type:
+    | 'modifyDetected'
+    | 'compile'
+    | 'compileSuccess'
+    | 'compileFailed'
+    | 'socketOpen';
   text: string;
   files?: string[];
 }

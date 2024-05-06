@@ -11,53 +11,50 @@ const hmrModuleApiCode = (relPath) => {
 };
 
 const socketCode = () => `
-// 엔트리가 되는 모든 코드에 이 코드를 넣어줘야함
-// 메인 엔트리에서 hot.update 스크립트를 로드해야함
-// 한번만 평가되어야함
-
-if (window?.hmrSocket === undefined) {
-  // Connect to WebSocket
+if (window.hmrSocket === undefined) {
+  window.hmrSocket = true;
   var socket = new WebSocket('ws://localhost:3000/dev-server');
 
   socket.onopen = function (event) {
-    socket.send('Hello Server!');
+    socket.send('[dev-server-client] handmade dev server 소켓이 연결되었습니다.');
   };
-
+  
   socket.onmessage = function (event) {
     const message = JSON.parse(event.data);
-
-    if (message.type === 'notice') {
+  
+    if (message.type === 'socketOpen') {
       console.log(message.text);
     }
-
-    if (message.type === 'modify') {
+  
+    if (message.type === 'modifyDetected') {
       console.log(message.text);
-
-      if (message.text === '[dev-server] 웹팩 리컴파일을 완료했습니다.') {
-        if (module.hot && module.hot.status() === 'idle') {
-          console.info('hot check');
-          module.hot
-            .check(true)
-            .then((outdatedModules) => {
-              console.log('Updated modules:', outdatedModules);
-            })
-            .catch((e) => console.info(e));
-        }
+    }
+  
+    if (message.type === 'compileSuccess') {
+      console.log(message.text);
+      if (module.hot && module.hot.status() === 'idle') {
+        console.info('[dev-server-client] 컴파일 완료된 JS파일을 새로 로드하고, 엔트리에서부터 리렌더합니다.');
+        module.hot
+          .check(true)
+          .then((outdatedModules) => {
+            console.info('[dev-server-client] 다음 바뀐 파일들이 새롭게 평가됩니다.', outdatedModules);
+          })
+          .catch((e) => {
+            console.info('[dev-server-client] 파일 업데이트 과정에서 에러가 발생했습니다.');
+            console.error(e);
+          });
       }
     }
   };
-
+  
   socket.onclose = function (event) {
-    console.log('Server: Connection Closed');
+    console.log('[dev-server-client] 소켓 커넥션이 종료되었습니다.');
   };
-
+  
   socket.onerror = function (error) {
-    console.log('WebSocket Error: ' + error);
+    console.log('[dev-server-client] 소켓 통신 중 에러가 발생했습니다.' + error);
   };
-
-  window.hmrSocket = true;
 }
-
 `;
 
 export default function (source) {

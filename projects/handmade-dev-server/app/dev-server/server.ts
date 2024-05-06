@@ -69,30 +69,33 @@ export const runDevServer = async ({ webpackConfig }: Params) => {
           // @ts-ignore
           socket.send(
             createMessage({
-              type: 'notice',
-              text: `[dev-server] 아래 파일들의 수정이 감지되었습니다.\n${eventsFile.join(
+              type: 'modifyDetected',
+              text: `[dev-server-socket/modifyDetected] 아래 파일들의 수정이 감지되었습니다.\n${eventsFile.join(
                 '\n'
               )}`,
             })
           );
 
-          console.info(
-            `\n[dev-server] 아래 파일들의 수정이 감지되었습니다.\n${eventsFile.join(
-              '\n'
-            )}`
-          );
+          try {
+            // 소켓 연결은 여러개일 수 있지만(브라우저 탭 여러개) 리컴파일은 한번만 진행되어야 의도대로 동작한다.
 
-          await runCompiler({ webpackConfig });
-
-          // @ts-ignore
-          socket.send(
-            createMessage({
-              type: 'modify',
-              text: `[dev-server] 웹팩 리컴파일을 완료했습니다.`,
-            })
-          );
-
-          console.info(`[dev-server] 웹팩 리컴파일을 완료했습니다.`);
+            await runCompiler({ webpackConfig });
+            // @ts-ignore
+            socket.send(
+              createMessage({
+                type: 'compileSuccess',
+                text: `[dev-server-socket/compileSuccess] 웹팩 리컴파일을 완료했습니다.`,
+              })
+            );
+          } catch (error) {
+            // @ts-ignore
+            socket.send(
+              createMessage({
+                type: 'compileFailed',
+                text: `[dev-server-socket/compileFailed] 웹팩 리컴파일에 실패했습니다.\n${error}`,
+              })
+            );
+          }
         };
 
         const cleanUpWatcher = await watcher({
@@ -103,8 +106,8 @@ export const runDevServer = async ({ webpackConfig }: Params) => {
         // @ts-ignore
         socket.on('message', () => {
           const message = createMessage({
-            type: 'notice',
-            text: '[dev-server] 파일의 변경사항을 전달하는 웹 소켓 서버를 /dev-server 엔드포인트에 엽니다.',
+            type: 'socketOpen',
+            text: '[dev-server/socketOpen] 파일의 변경사항을 전달하는 웹 소켓 서버를 /dev-server 엔드포인트에 엽니다.',
           });
           // @ts-ignore
           socket.send(message);
