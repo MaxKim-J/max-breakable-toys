@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export function Component2() {
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState(2);
 
   const increase = () => {
     setCount((s) => s + 1);
@@ -19,8 +19,4 @@ export function Component2() {
       <button onClick={decrease}>decrease</button>
     </div>
   );
-}
-
-if (module.hot) {
-  module.hot.accept('../index');
 }
