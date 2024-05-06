@@ -10,9 +10,7 @@ const config = {
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
   },
-  recordsPath: path.join(__dirname, 'records.json'),
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
@@ -38,9 +36,6 @@ const config = {
         },
       },
     ],
-  },
-  optimization: {
-    runtimeChunk: 'single',
   },
   plugins: [
     new HtmlWebpackPlugin({

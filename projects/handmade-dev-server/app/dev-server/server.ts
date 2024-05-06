@@ -11,6 +11,7 @@ import { runCompiler } from './webpack/runCompiler';
 import { getWatchPaths } from './watcher/getWatchPaths';
 import { watcher } from './watcher/watcher';
 import { createMessage } from './socket/messageParser';
+import { augmentWebpackConfig } from './webpack/augemtWebpackConfig';
 
 const port = 3000;
 
@@ -29,16 +30,16 @@ const cleanUpAndShutdown = async () => {
 };
 
 export const runDevServer = async ({ webpackConfig }: Params) => {
-  // todo: 여기서 받는건 무조건 object
-  const entry = (webpackConfig?.entry as { app: string }).app;
+  const augmentedWebpackConfig = augmentWebpackConfig(webpackConfig);
+  const appEntry = augmentedWebpackConfig.entry.app;
 
   const outputAbsolutePath = path.resolve(
     projectRootDir,
-    webpackConfig?.output?.path ?? 'dist'
+    augmentedWebpackConfig?.output?.path ?? 'dist'
   );
 
   // 1. watch할 디렉토리(파일아님)를 미리 선별한다. 파일 descriptor를 디렉토리에만 달아준다.
-  const watchPaths = await getWatchPaths(entry);
+  const watchPaths = await getWatchPaths(appEntry);
   console.info(
     `[dev-server] watcher가 다음 ${watchPaths.length}개의 디렉토리들을 워치합니다`,
     watchPaths

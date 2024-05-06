@@ -1,7 +1,6 @@
 import path from 'node:path';
 import fs from 'node:fs/promises';
 import { build } from 'esbuild';
-import webpack from 'webpack';
 
 const rootDir = process.env.PROJECT_CWD;
 const packageDir = path.resolve(rootDir, 'projects/handmade-dev-server/app');
@@ -30,17 +29,6 @@ const executeBinScript = async () => {
     path.resolve(packageDir, './__temp/server.mjs')
   );
   const { default: webpackConfig } = await import(webpackConfigPath);
-
-  // 일단 entry는 하나라고 가정
-  webpackConfig.entry = {
-    app: webpackConfig.entry,
-    hot: 'webpack/hot/dev-server.js',
-  };
-
-  webpackConfig.plugins = [
-    new webpack.HotModuleReplacementPlugin(),
-    ...(webpackConfig?.plugins ?? []),
-  ];
 
   runDevServer({ webpackConfig });
 };
