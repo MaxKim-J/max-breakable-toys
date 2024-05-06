@@ -16,7 +16,3 @@ export function Component() {
     </div>
   );
 }
-
-if (module.hot) {
-  module.hot.accept('../../app/src/index');
-}
