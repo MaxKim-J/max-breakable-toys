@@ -9,14 +9,10 @@
     "projects/module-federation-example-1/*",
     "projects/module-federation-example-2/*",
     "projects/module-federation-data-layer/*",
+    "projects/mf-event-pipeline/*",
     "projects/mf-fast-refresh/*",
     "projects/*"
   ],
-  "scripts": {
-    "turbo:start-mf1": "turbo run start --filter='@breakable-toy/module-federation-example-1*'",
-    "turbo:start-mf2": "turbo run start --filter='@breakable-toy/module-federation-example-2*'",
-    "turbo:start-shared-deps": "turbo run start --filter='@breakable-toy/shared-deps-mf*'"
-  },
   "devDependencies": {
     "@types/node": "^18.19.1",
     "@types/ws": "^8.5.10",
@@ -29,8 +25,5 @@
     "prettier": "^2.8.7",
     "turbo": "^1.9.9",
     "typescript": "^5.0.4"
-  },
-  "dependencies": {
-    "esbuild": "^0.23.0"
   }
 }
