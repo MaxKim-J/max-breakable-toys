@@ -1,0 +1,1 @@
+export { MicroAppLoader } from './MicroAppLoader';
